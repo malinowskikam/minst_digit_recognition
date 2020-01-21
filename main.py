@@ -1,5 +1,7 @@
-from data import get_training_data
-from nn import fit_nn
+import nb
+from data import get_training_data_2d
 
-data = get_training_data()
-fit_nn(data)
+model = nb.create_model()
+data = get_training_data_2d()
+nb.fit(model,data)
+print(nb.evaluate_acc(model,data))
