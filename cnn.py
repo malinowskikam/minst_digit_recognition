@@ -86,6 +86,4 @@ def evaluate_acc(model,data):
 def evaluate_cm(model,data):
     prediction = np.argmax(model.predict(data[1]),axis=1)
     data_decoded = np.argmax(data[3],axis=1)
-    print(prediction)
-    print(data_decoded)
     return confusion_matrix(data_decoded, prediction, labels=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ])
