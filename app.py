@@ -19,7 +19,7 @@ def paint(event):
 
 def predict(event):
     master.update_idletasks()
-    x2 = master.winfo_rootx() + w.winfo_x()
+    x2 = master.winfo_rootx() + w.winfo_x()+1
     y2 = master.winfo_rooty() + w.winfo_y()
     x1 = x2 + w.winfo_width()
     y1 = y2 + w.winfo_height()
