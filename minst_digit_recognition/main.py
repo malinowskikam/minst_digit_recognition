@@ -1,5 +1,5 @@
-import cnn, rf, svm, nn5, dt, nb
-from data import get_training_data_2d, get_training_data_4d
+from minst_digit_recognition import cnn, rf, svm, nn5, dt, nb
+from minst_digit_recognition.data import get_training_data_2d, get_training_data_4d
 
 data = get_training_data_2d()
 

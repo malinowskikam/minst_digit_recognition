@@ -1,13 +1,13 @@
 from joblib import dump, load
 from sklearn.metrics import confusion_matrix
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
 
-model_dir = "models\\"
-name = "5_nearest_neighbours"
+model_dir = "models/"
+name = "decision_tree"
 
 
 def create_model():
-    return KNeighborsClassifier(n_neighbors=5)
+    return DecisionTreeClassifier()
 
 
 def load_model():

@@ -3,12 +3,12 @@ from keras.callbacks import ReduceLROnPlateau
 from keras.layers import Dense, Dropout, Conv2D, MaxPool2D, Flatten
 from keras.optimizers import RMSprop
 from keras_preprocessing.image import ImageDataGenerator, np
-from keras.engine.saving import load_model as keras_load_model
+from keras.saving import load_model as keras_load_model
 from sklearn.metrics import confusion_matrix
 
 batch_size = 86
 epochs = 30
-model_dir = "models\\"
+model_dir = "models/"
 name = "convolutional_neural_network"
 
 
@@ -28,7 +28,7 @@ def create_model():
     model.add(Dropout(0.5))
     model.add(Dense(10, activation="softmax"))
 
-    optimizer = RMSprop(lr=0.001, rho=0.9, epsilon=1e-08, decay=0.0)
+    optimizer = RMSprop(learning_rate=0.001, rho=0.9, epsilon=1e-08, decay=0.0)
 
     model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
 
@@ -62,7 +62,7 @@ def fit(model,data):
     )
 
     datagen.fit(data[0])
-    history = model.fit_generator(
+    history = model.fit(
         datagen.flow(
             data[0],
             data[2],

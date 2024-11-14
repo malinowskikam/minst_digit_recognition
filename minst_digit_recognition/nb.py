@@ -1,13 +1,13 @@
-from joblib import load, dump
-from sklearn.ensemble import RandomForestClassifier
+from joblib import dump, load
 from sklearn.metrics import confusion_matrix
+from sklearn.naive_bayes import GaussianNB
 
-model_dir = "models\\"
-name = "random_forest"
+model_dir = "models/"
+name = "naive_bayes"
 
 
 def create_model():
-    return RandomForestClassifier(n_jobs=-1, n_estimators=20, random_state=234263)
+    return GaussianNB()
 
 
 def load_model():

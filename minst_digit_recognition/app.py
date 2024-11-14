@@ -1,14 +1,15 @@
 from tkinter import *
+cv2 = "*"
+
 from PIL import ImageGrab
 import cv2
-from keras.engine.saving import load_model
+from keras.saving import load_model
 from numpy import argmax
 
 canvas_width =280
 canvas_height = 280
 
-interface_scaling = 1.25 #win10 interface scaling
-
+interface_scaling = 1.0
 
 def paint(event):
     color = "#000000"
@@ -25,6 +26,7 @@ def predict(event):
     y1 = y2 + w.winfo_height()
     ImageGrab.grab().crop((x2*interface_scaling, y2*interface_scaling, x1*interface_scaling, y1*interface_scaling)).save("temp.jpg")
     img = cv2.imread("temp.jpg",cv2.IMREAD_GRAYSCALE)
+    cv2.imdecode()
     img = cv2.resize(img, (28,28), interpolation=cv2.INTER_CUBIC)
 
     for i in range(len(img)):

@@ -1,13 +1,13 @@
-from joblib import dump, load
+from joblib import load, dump
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
-from sklearn.tree import DecisionTreeClassifier
 
-model_dir = "models\\"
-name = "decision_tree"
+model_dir = "models/"
+name = "random_forest"
 
 
 def create_model():
-    return DecisionTreeClassifier()
+    return RandomForestClassifier(n_jobs=-1, n_estimators=20, random_state=234263)
 
 
 def load_model():

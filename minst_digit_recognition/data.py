@@ -1,14 +1,16 @@
 import pandas
+# from keras.src.utils import to_categorical
 from keras.utils import to_categorical
 from pandas import to_numeric
 from sklearn.model_selection import train_test_split
 
 
-test_data_file = "data\\test.csv"
-train_data_file = "data\\train.csv"
+test_data_file = "data/test.csv"
+train_data_file = "data/train.csv"
 
 
 def load_train_data():
+    import os
     dataframe = pandas.read_csv(train_data_file).apply(to_numeric)
 
     x = dataframe.drop("label", axis=1).values

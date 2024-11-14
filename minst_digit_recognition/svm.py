@@ -1,13 +1,13 @@
-from joblib import dump, load
+from joblib import load, dump
 from sklearn.metrics import confusion_matrix
-from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
 
-model_dir = "models\\"
-name = "naive_bayes"
+model_dir = "models/"
+name = "support_vector_machine"
 
 
 def create_model():
-    return GaussianNB()
+    return SVC()
 
 
 def load_model():

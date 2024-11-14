@@ -1,13 +1,13 @@
-from joblib import load, dump
+from joblib import dump, load
 from sklearn.metrics import confusion_matrix
-from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
 
-model_dir = "models\\"
-name = "support_vector_machine"
+model_dir = "models/"
+name = "5_nearest_neighbours"
 
 
 def create_model():
-    return SVC()
+    return KNeighborsClassifier(n_neighbors=5)
 
 
 def load_model():
