@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "minst-digit-recognition"
+version = "0.1.0"
+description = "A small project comparing various machine learning techniques for recognizing handwritten digits, using the MNIST dataset."
+authors = ["Kamil Malinowski <malinowskikam96@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
