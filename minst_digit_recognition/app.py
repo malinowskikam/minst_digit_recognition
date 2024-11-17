@@ -1,4 +1,5 @@
 from tkinter import *
+
 cv2 = "*"
 
 from PIL import ImageGrab
@@ -6,10 +7,11 @@ import cv2
 from keras.saving import load_model
 from numpy import argmax
 
-canvas_width =280
+canvas_width = 280
 canvas_height = 280
 
 interface_scaling = 1.0
+
 
 def paint(event):
     color = "#000000"
@@ -20,23 +22,25 @@ def paint(event):
 
 def predict(event):
     master.update_idletasks()
-    x2 = master.winfo_rootx() + w.winfo_x()+1
+    x2 = master.winfo_rootx() + w.winfo_x() + 1
     y2 = master.winfo_rooty() + w.winfo_y()
     x1 = x2 + w.winfo_width()
     y1 = y2 + w.winfo_height()
-    ImageGrab.grab().crop((x2*interface_scaling, y2*interface_scaling, x1*interface_scaling, y1*interface_scaling)).save("temp.jpg")
-    img = cv2.imread("temp.jpg",cv2.IMREAD_GRAYSCALE)
+    ImageGrab.grab().crop(
+        (x2 * interface_scaling, y2 * interface_scaling, x1 * interface_scaling, y1 * interface_scaling)).save(
+        "temp.jpg")
+    img = cv2.imread("temp.jpg", cv2.IMREAD_GRAYSCALE)
     cv2.imdecode()
-    img = cv2.resize(img, (28,28), interpolation=cv2.INTER_CUBIC)
+    img = cv2.resize(img, (28, 28), interpolation=cv2.INTER_CUBIC)
 
     for i in range(len(img)):
         for j in range(len(img[0])):
             img[i][j] = 255 - img[i][j]
 
-    img = img.reshape(-1,28,28,1)
+    img = img.reshape(-1, 28, 28, 1)
     prediction = model.predict(img)
     index = argmax(prediction)
-    print(f"{index} - {prediction[0][index]*100}%")
+    print(f"{index} - {prediction[0][index] * 100}%")
 
 
 def clean_screen(event):
@@ -47,7 +51,6 @@ model = load_model("models/convolutional_neural_network_30_86.h5")
 master = Tk()
 master.geometry("280x280")
 master.title("App")
-
 
 w = Canvas(master,
            width=canvas_width,

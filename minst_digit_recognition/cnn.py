@@ -1,9 +1,9 @@
-from keras import Sequential
-from keras.callbacks import ReduceLROnPlateau
-from keras.layers import Dense, Dropout, Conv2D, MaxPool2D, Flatten
-from keras.optimizers import RMSprop
+from tensorflow.keras import Sequential
+from tensorflow.keras.callbacks import ReduceLROnPlateau
+from tensorflow.keras.layers import Dense, Dropout, Conv2D, MaxPool2D, Flatten
+from tensorflow.keras.optimizers import RMSprop
 from keras_preprocessing.image import ImageDataGenerator, np
-from keras.saving import load_model as keras_load_model
+from tensorflow.keras.saving import load_model as keras_load_model
 from sklearn.metrics import confusion_matrix
 
 batch_size = 86
@@ -39,7 +39,7 @@ def load_model():
     return keras_load_model(model_dir + name + "_" + str(epochs) + "_" + str(batch_size) + ".h5")
 
 
-def fit(model,data):
+def fit(model, data):
     datagen = ImageDataGenerator(
         featurewise_center=False,
         samplewise_center=False,
@@ -79,11 +79,11 @@ def fit(model,data):
     return history
 
 
-def evaluate_acc(model,data):
-    return model.evaluate(data[1],data[3],verbose=0)[1]
+def evaluate_acc(model, data):
+    return model.evaluate(data[1], data[3], verbose=0)[1]
 
 
-def evaluate_cm(model,data):
-    prediction = np.argmax(model.predict(data[1]),axis=1)
-    data_decoded = np.argmax(data[3],axis=1)
+def evaluate_cm(model, data):
+    prediction = np.argmax(model.predict(data[1]), axis=1)
+    data_decoded = np.argmax(data[3], axis=1)
     return confusion_matrix(data_decoded, prediction, labels=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ])
