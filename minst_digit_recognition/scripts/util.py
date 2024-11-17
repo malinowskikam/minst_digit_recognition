@@ -8,5 +8,4 @@ def render_submission(data):
         writer = csv.writer(file)
         writer.writerow(["ImageId", "Label"])
         for i in range(len(data)):
-            writer.writerow([i+1, argmax(data[i])])
-
+            writer.writerow([i + 1, argmax(data[i])])

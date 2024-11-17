@@ -15,7 +15,8 @@ def main():
     print(f"Shape: {dataframe.shape}")
     print(f"null values: {dataframe.isnull().sum().max() > 0}")
     print(f"non numeric: {dataframe_num.isnull().sum().max() > 0}")
-    print(f"outside range: {dataframe_num.where(np.logical_and(dataframe_num >= 0, dataframe_num <= 255)).isnull().sum().max() > 0}")
+    print(
+        f"outside range: {dataframe_num.where(np.logical_and(dataframe_num >= 0, dataframe_num <= 255)).isnull().sum().max() > 0}")
     print(f"labels:\n{dataframe['label'].value_counts().sort_index()}")
     mean = dataframe.drop('label', axis=1).mean(axis=0).apply(np.round).apply(int).values.reshape(28, 28)
     mean = mean * -1 + 255
