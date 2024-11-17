@@ -2,10 +2,6 @@
 package containing base machine learning model class
 """
 import abc
-from pathlib import Path
-from typing import Any
-
-import joblib
 
 from minst_digit_recognition.data.trainingData import TrainingData
 
@@ -68,20 +64,3 @@ class MlModel(metaclass=abc.ABCMeta):
         Should rise attribute error if not initialized
         """
         pass
-
-
-class JoblibModelSerializationMixin(MlModel, metaclass=abc.ABCMeta):
-    """
-    Mixin for MlModels serializable with joblib
-    """
-    _model: Any
-
-    def load(self) -> None:
-        self._model = joblib.load(self._get_model_filename())
-
-    def save(self) -> None:
-        self._check_initialized()
-        joblib.dump(self._model, self._get_model_filename())
-
-    def _get_model_filename(self):
-        return Path(self.models_dir, f"{self.name}.joblib")
