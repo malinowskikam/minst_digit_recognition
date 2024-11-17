@@ -4,7 +4,7 @@ from typing import Any
 import joblib
 
 
-class JoblibModelSerializationMixin:
+class JoblibModelSerializationMixin(MlModel):
     _model: Any
     _model_path: Path
 
