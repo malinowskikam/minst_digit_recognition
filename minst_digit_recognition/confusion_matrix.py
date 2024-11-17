@@ -1,7 +1,23 @@
-from data import get_training_data_4d, get_training_data_2d
-import cnn, rf, svm, nn5, dt, nb
+"""
+Executable package that evaluates confusion matrix for all available models
+Requires models to be loadable
+"""
 
-data = get_training_data_4d()
+def main():
+    from minst_digit_recognition.data import TrainingData
+    from minst_digit_recognition.models import get_models
+
+    data = TrainingData()
+
+    print("Evaluating confusion matrices for models...")
+    for _, model in get_models().items():
+        model.load()
+        print(model.name)
+        print(model.evaluate_confusion_matrix(data))
+
+
+if __name__ == "__main__":
+    main()
 
 _cnn_model = cnn.load_model()
 _cnn_cm = cnn.evaluate_cm(_cnn_model,data)

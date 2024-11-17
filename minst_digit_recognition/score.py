@@ -1,5 +1,6 @@
 """
-executable package that create, fits and saves all available models
+Executable package that scores all available models
+Requires models to be loadable
 """
 
 

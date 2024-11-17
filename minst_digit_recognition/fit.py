@@ -1,5 +1,5 @@
 """
-executable package that create, fits and saves all available models
+Executable package that create, fits and saves all available models
 """
 
 
