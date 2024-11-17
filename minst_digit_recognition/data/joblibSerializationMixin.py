@@ -1,17 +1,24 @@
+from abc import ABCMeta
 from pathlib import Path
 from typing import Any
 
 import joblib
 
+from minst_digit_recognition.models.base import MlModel
 
-class JoblibModelSerializationMixin(MlModel):
+
+class JoblibModelSerializationMixin(MlModel, metaclass=ABCMeta):
+    """
+    Mixin for MlModels serializable with joblib
+    """
     _model: Any
-    _model_path: Path
 
     def load(self) -> None:
-        self._model = joblib.load(self._model_path)
+        self._model = joblib.load(self._get_model_filename())
 
     def save(self) -> None:
-        if not self._model:
-            raise AttributeError("Model")
-        joblib.dump(self._model, self._model_path)
+        self._check_initialized()
+        joblib.dump(self._model, self._get_model_filename())
+
+    def _get_model_filename(self):
+        return Path(self.models_dir, f"{self.model_name}.joblib")

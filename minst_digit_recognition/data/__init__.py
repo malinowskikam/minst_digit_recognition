@@ -9,6 +9,8 @@ import pandas as pd
 from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
 
+from minst_digit_recognition.data.joblibSerializationMixin import JoblibModelSerializationMixin
+
 
 class TrainingData:
     """
