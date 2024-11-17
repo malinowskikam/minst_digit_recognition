@@ -9,8 +9,9 @@ def main():
 
     data = TrainingData()
 
+    print("Fitting models...")
     for _, model in get_models().items():
-        print("Fitting:", model.name)
+        print("Fitting", model.name)
         model.fit(data)
         model.save()
 
