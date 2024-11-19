@@ -22,6 +22,7 @@ This package offers several executable scripts:
 - ``fit`` - train all models and save them in the ``./models`` directory
 - ``score`` - calculate accuracy of the models
 - ``confusion_matrix`` - calculate confusion matrices for the models
+- ``app`` - run the drawing app allowing to test the models
 
 The ``main`` script executes these steps in sequence
 
@@ -31,6 +32,8 @@ poetry run [script]
 ```
 
 ## App
+
+TODO
 
 ## Available models
 
