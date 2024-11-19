@@ -19,12 +19,24 @@ To run this project, you need to download the data (``train.csv``) from this exe
 
 This package offers several executable scripts:
 
-- ``mnist_digit_recognition.fit`` - train all models and save them in the ``./models`` directory
-- ``mnist_digit_recognition.score`` - calculate accuracy of the models
-- ``mnist_digit_recognition.confusion_matrix`` - calculate confusion matrices for the models
+- ``fit`` - train all models and save them in the ``./models`` directory
+- ``score`` - calculate accuracy of the models
+- ``confusion_matrix`` - calculate confusion matrices for the models
 
-The ``mnist_digit_recognition.__main__`` package executes these steps in sequence
+The ``main`` script executes these steps in sequence
+
+To run the script using poetry run:
+```commandline
+poetry run [script]
+```
 
 ## App
 
 ## Available models
+
+Currently supported models are:
+- Naive Bayes (from sklearn)
+- Decision Tree (from sklearn)
+- Random Forest (from sklearn)
+- K Nearest Neighbours (k=5, from sklearn)
+- Support Vector (from sklearn)

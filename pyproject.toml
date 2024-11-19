@@ -18,6 +18,13 @@ joblib = "^1.4.2"
 keras-preprocessing = "^1.1.2"
 pillow = "^11.0.0"
 
+[tool.poetry.scripts]
+main = "mnist_digit_recognition.__main__:main"
+fit = "mnist_digit_recognition.fit:main"
+score = "mnist_digit_recognition.score:main"
+confusion_matrix = "mnist_digit_recognition.confusion_matrix:main"
+app = "mnist_digit_recognition.app:main"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
