@@ -2,7 +2,7 @@
 data loading package
 """
 
-from minst_digit_recognition.data.trainingData import TrainingData
+from mnist_digit_recognition.data.trainingData import TrainingData
 
 # import pathlib
 #

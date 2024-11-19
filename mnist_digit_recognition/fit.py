@@ -4,8 +4,8 @@ Executable package that create, fits and saves all available models
 
 
 def main():
-    from minst_digit_recognition.data import TrainingData
-    from minst_digit_recognition.models import get_models
+    from mnist_digit_recognition.data import TrainingData
+    from mnist_digit_recognition.models import get_models
 
     data = TrainingData()
 

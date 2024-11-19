@@ -5,7 +5,7 @@ executes fir, score and confusion_matrix scripts in sequence
 
 
 def main():
-    from minst_digit_recognition import fit, score, confusion_matrix
+    from mnist_digit_recognition import fit, score, confusion_matrix
     fit.main()
     score.main()
     confusion_matrix.main()

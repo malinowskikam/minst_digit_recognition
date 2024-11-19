@@ -1,4 +1,4 @@
-# MINST_digit_recognition
+# MMIST_digit_recognition
 
 A small project comparing various machine learning techniques for recognizing handwritten digits, using the MNIST dataset.
 
@@ -19,11 +19,11 @@ To run this project, you need to download the data (``train.csv``) from this exe
 
 This package offers several executable scripts:
 
-- ``minst_digit_recognition.fit`` - train all models and save them in the ``./models`` directory
-- ``minst_digit_recognition.score`` - calculate accuracy of the models
-- ``minst_digit_recognition.confusion_matrix`` - calculate confusion matrices for the models
+- ``mnist_digit_recognition.fit`` - train all models and save them in the ``./models`` directory
+- ``mnist_digit_recognition.score`` - calculate accuracy of the models
+- ``mnist_digit_recognition.confusion_matrix`` - calculate confusion matrices for the models
 
-The ``minst_digit_recognition.__main__`` package executes these steps in sequence
+The ``mnist_digit_recognition.__main__`` package executes these steps in sequence
 
 ## App
 

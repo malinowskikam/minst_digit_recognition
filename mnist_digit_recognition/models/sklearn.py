@@ -14,8 +14,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
-from minst_digit_recognition.data import TrainingData
-from minst_digit_recognition.models.base import MlModel
+from mnist_digit_recognition.data import TrainingData
+from mnist_digit_recognition.models.base import MlModel
 
 
 class SkLearnClassifierModel(MlModel, metaclass=abc.ABCMeta):
@@ -52,7 +52,7 @@ class SkLearnClassifierModel(MlModel, metaclass=abc.ABCMeta):
         return confusion_matrix(data.test_y, prediction, labels=list(range(10)))
 
     def evaluate_score(self, data: TrainingData):
-        return self._model.score(data.test_x, data.test_y)
+        return round(self._model.score(data.test_x, data.test_y), 4)
 
     def load(self) -> None:
         self._model = joblib.load(self._get_model_filename())

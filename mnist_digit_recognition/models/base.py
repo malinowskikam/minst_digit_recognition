@@ -3,7 +3,7 @@ package containing base machine learning model class
 """
 import abc
 
-from minst_digit_recognition.data.trainingData import TrainingData
+from mnist_digit_recognition.data.trainingData import TrainingData
 
 
 class MlModel(metaclass=abc.ABCMeta):

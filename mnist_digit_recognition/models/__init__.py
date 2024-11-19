@@ -1,5 +1,5 @@
-from minst_digit_recognition.models.base import MlModel as _MlModel
-from minst_digit_recognition.models import sklearn as _sk
+from mnist_digit_recognition.models.base import MlModel as _MlModel
+from mnist_digit_recognition.models import sklearn as _sk
 
 
 def get_models() -> dict[str, _MlModel]:

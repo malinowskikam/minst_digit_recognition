@@ -8,7 +8,7 @@ from sklearn.metrics import confusion_matrix
 
 batch_size = 86
 epochs = 30
-model_dir = "models/"
+model_dir = "/"
 name = "convolutional_neural_network"
 
 
