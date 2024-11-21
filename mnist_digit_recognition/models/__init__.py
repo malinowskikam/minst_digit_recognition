@@ -1,5 +1,5 @@
 from mnist_digit_recognition.models.base import MlModel as _MlModel
-from mnist_digit_recognition.models import sklearn as _sk
+from mnist_digit_recognition.models import sklearn as _sk, cnn
 
 
 def get_models() -> dict[str, _MlModel]:
@@ -9,4 +9,5 @@ def get_models() -> dict[str, _MlModel]:
         "rf": _sk.RandomForest(),
         "nn5": _sk.NearestNeighbours5(),
         "sv": _sk.SupportVector(),
+        "cnn": cnn.CnnModel(),
     }
