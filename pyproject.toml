@@ -8,15 +8,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-tensorflow = "^2.18.0"
-keras = "^3.6.0"
-pandas = "^2.2.3"
-numpy = "<2.1.0"
-opencv-python = "^4.10.0.84"
-scikit-learn = "^1.5.2"
-joblib = "^1.4.2"
-keras-preprocessing = "^1.1.2"
-pillow = "^11.0.0"
+tensorflow = "2.18.0"
+pandas = "2.2.3"
+numpy = "2.0.2"
+opencv-python = "4.10.0.84"
+scikit-learn = "1.5.2"
+joblib = "1.4.2"
+keras-preprocessing = "1.1.2"
+pillow = "11.0.0"
 
 [tool.poetry.scripts]
 main = "mnist_digit_recognition.__main__:main"
