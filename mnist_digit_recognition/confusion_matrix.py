@@ -5,10 +5,11 @@ Requires models to be loadable
 
 
 def main():
-    from mnist_digit_recognition.data import TrainingData
+    from mnist_digit_recognition.data import InputData
     from mnist_digit_recognition.models import get_models
 
-    data = TrainingData()
+    data = InputData()
+    data.load()
 
     print("Evaluating confusion matrices for models...")
     for _, model in get_models().items():
