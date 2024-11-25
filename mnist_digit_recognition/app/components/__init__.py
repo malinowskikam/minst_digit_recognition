@@ -1,0 +1,1 @@
+from mnist_digit_recognition.app.components.model_picker import ModelPicker
