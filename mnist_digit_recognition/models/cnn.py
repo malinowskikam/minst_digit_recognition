@@ -36,11 +36,11 @@ class CnnModel(MlModel):
     def fit(self, data: TrainingData) -> None:
         self._create_model()
 
-        train_x = (data.train_x / 255.0).reshape(-1, 28, 28, 1)
-        test_x = (data.test_x / 255.0).reshape(-1, 28, 28, 1)
+        train_x = self._transform_data(data.train_x)
+        test_x = self._transform_data(data.test_y)
 
-        train_y = to_categorical(data.train_y,num_classes=10)
-        test_y = to_categorical(data.test_y, num_classes=10)
+        train_y = self._transform_labels(data.train_y)
+        test_y = self._transform_labels(data.test_y)
 
         self._data_gen.fit(train_x)
 
@@ -60,7 +60,7 @@ class CnnModel(MlModel):
 
     def predict(self, data: TrainingData):
         self._check_initialized()
-        test_x = (data.test_x / 255.0).reshape(-1, 28, 28, 1)
+        test_x = self._transform_data(data.test_x)
         return np.argmax(self._model.predict(test_x), axis=1)
 
     def evaluate_confusion_matrix(self, data: TrainingData):
@@ -69,13 +69,22 @@ class CnnModel(MlModel):
 
     def evaluate_score(self, data: TrainingData):
         self._check_initialized()
-        test_x = (data.test_x / 255.0).reshape(-1, 28, 28, 1)
-        test_y = to_categorical(data.test_y, num_classes=10)
+        test_x = self._transform_data(data.test_x)
+        test_y = self._transform_labels(data.test_y)
         return self._model.evaluate(test_x, test_y, verbose=0)[1]
 
+    def ready(self) -> bool:
+        return hasattr(self, "_model") and self._model
+
     def _check_initialized(self) -> None:
-        if not hasattr(self, "_model") or not self._model:
+        if not self.ready():
             raise AttributeError("Model object not initiated. Load or fit the model first.")
+
+    def _transform_data(self, v: np.ndarray) -> np.ndarray:
+        return (v / 255.0).reshape(-1, 28, 28, 1)
+
+    def _transform_labels(self, v:np.ndarray) -> np.ndarray:
+        return to_categorical(v, num_classes=10)
 
     def _create_model(self):
         self._model = Sequential()

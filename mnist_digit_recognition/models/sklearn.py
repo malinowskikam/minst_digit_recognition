@@ -64,8 +64,11 @@ class SkLearnClassifierModel(MlModel, metaclass=abc.ABCMeta):
     def _get_model_filename(self):
         return pathlib.Path(self.models_dir, f"{self.name}.joblib")
 
+    def ready(self) -> bool:
+        return hasattr(self, "_model") and self._model
+
     def _check_initialized(self):
-        if not hasattr(self, "_model") or not self._model:
+        if not self.ready():
             raise AttributeError("Model object not initiated. Load or fit the model first.")
 
 

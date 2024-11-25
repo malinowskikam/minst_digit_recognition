@@ -25,7 +25,7 @@ class MlModel(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def load(self) -> None:
         """
-        Load model from disk
+        Load model from disk. This method should make the model "ready", similar to fit.
         """
         pass
 
@@ -39,7 +39,7 @@ class MlModel(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def fit(self, data: TrainingData) -> None:
         """
-        Train model on provided data
+        Train model on provided data. This method should make the model "ready", similar to load.
 
         :param data: TrainingData object containing data compatible with this model
         """
@@ -58,9 +58,10 @@ class MlModel(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def _check_initialized(self) -> None:
+    def ready(self) -> bool:
         """
-        Check if the current instance of MlModel is initialized
-        Should rise attribute error if not initialized
+        Check if current model instance is loaded/fitted
+
+        :return: True if model is ready, false otherwise
         """
         pass
