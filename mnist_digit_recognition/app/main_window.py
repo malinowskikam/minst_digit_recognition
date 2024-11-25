@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QMainWindow, QLabel, QWidget, QHBoxLayout
 
 from mnist_digit_recognition.app.components import ModelPicker
 from mnist_digit_recognition.models.base import MlModel
@@ -11,8 +11,17 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
+        self.setWindowTitle(self.title)
 
         self.model_picker = ModelPicker()
 
-        self.setWindowTitle(self.title)
-        self.setCentralWidget(self.model_picker)
+        model_label = QLabel("Model: ")
+
+        model_layout = QHBoxLayout()
+        model_layout.addWidget(model_label)
+        model_layout.addWidget(self.model_picker)
+
+        # Set the layout
+        w = QWidget()
+        w.setLayout(model_layout)
+        self.setCentralWidget(w)
