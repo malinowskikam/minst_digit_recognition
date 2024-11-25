@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 
-class TrainingData:
+class InputData:
     """
     Data loader for ML models
     """
@@ -19,7 +19,8 @@ class TrainingData:
         self._data_file = data_file
         self._test_size = test_size
 
-        file_ext = data_file.rsplit(".", 1)[-1]
+    def load(self):
+        file_ext = self._data_file.rsplit(".", 1)[-1]
         match file_ext:
             case "csv":
                 (self.train_x, self.test_x, self.train_y, self.test_y) = self._load_data_csv()

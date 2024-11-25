@@ -3,7 +3,7 @@ package containing base machine learning model class
 """
 import abc
 
-from mnist_digit_recognition.data import TrainingData
+from mnist_digit_recognition.data import InputData
 
 
 class MlModel(metaclass=abc.ABCMeta):
@@ -37,24 +37,24 @@ class MlModel(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def fit(self, data: TrainingData) -> None:
+    def fit(self, data: InputData) -> None:
         """
         Train model on provided data. This method should make the model "ready", similar to load.
 
-        :param data: TrainingData object containing data compatible with this model
+        :param data: InputData object containing data compatible with this model
         """
         pass
 
     @abc.abstractmethod
-    def predict(self, data: TrainingData):
+    def predict(self, data: InputData):
         pass
 
     @abc.abstractmethod
-    def evaluate_confusion_matrix(self, data: TrainingData):
+    def evaluate_confusion_matrix(self, data: InputData):
         pass
 
     @abc.abstractmethod
-    def evaluate_score(self, data: TrainingData):
+    def evaluate_score(self, data: InputData):
         pass
 
     @abc.abstractmethod

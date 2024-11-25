@@ -10,7 +10,7 @@ from tensorflow.keras.models import load_model as keras_load_model
 from tensorflow.keras.utils import to_categorical
 from sklearn.metrics import confusion_matrix
 
-from mnist_digit_recognition.data import TrainingData
+from mnist_digit_recognition.data import InputData
 from mnist_digit_recognition.models.base import MlModel
 
 
@@ -33,7 +33,7 @@ class CnnModel(MlModel):
         self._check_initialized()
         self._model.save(self._model_path)
 
-    def fit(self, data: TrainingData) -> None:
+    def fit(self, data: InputData) -> None:
         self._create_model()
 
         train_x = self._transform_data(data.train_x)
@@ -58,16 +58,16 @@ class CnnModel(MlModel):
             # steps_per_epoch=dataset.samples // self.batch_size,
             callbacks=[self._lr_reduction])
 
-    def predict(self, data: TrainingData):
+    def predict(self, data: InputData):
         self._check_initialized()
         test_x = self._transform_data(data.test_x)
         return np.argmax(self._model.predict(test_x), axis=1)
 
-    def evaluate_confusion_matrix(self, data: TrainingData):
+    def evaluate_confusion_matrix(self, data: InputData):
         self._check_initialized()
         return confusion_matrix(data.test_y, self.predict(data), labels=list(range(10)))
 
-    def evaluate_score(self, data: TrainingData):
+    def evaluate_score(self, data: InputData):
         self._check_initialized()
         test_x = self._transform_data(data.test_x)
         test_y = self._transform_labels(data.test_y)

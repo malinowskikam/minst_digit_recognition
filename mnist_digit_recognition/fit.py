@@ -4,10 +4,11 @@ Executable package that create, fits and saves all available models
 
 
 def main():
-    from mnist_digit_recognition.data import TrainingData
+    from mnist_digit_recognition.data import InputData
     from mnist_digit_recognition.models import get_models
 
-    data = TrainingData()
+    data = InputData()
+    data.load()
 
     print("Fitting models...")
     for _, model in get_models().items():
