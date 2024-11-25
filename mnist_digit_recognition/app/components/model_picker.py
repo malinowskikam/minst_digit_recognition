@@ -5,19 +5,19 @@ from mnist_digit_recognition.models.base import MlModel
 
 
 class ModelPicker(QComboBox):
-    default_option = "cnn"
-    models: dict[str, MlModel]
+    _default_option = "cnn"
+    _models: dict[str, MlModel]
 
     def __init__(self):
         super().__init__()
 
-        self.models = get_models()
+        self._models = get_models()
 
-        for key, model in self.models.items():
+        for key, model in self._models.items():
             self.addItem(key, userData=model)
 
-        if self.default_option in self.models:
-            self.setCurrentText(self.default_option)
+        if self._default_option in self._models:
+            self.setCurrentText(self._default_option)
 
     def get_current_model(self):
-        return self.models[self.currentText()]
+        return self._models[self.currentText()]
