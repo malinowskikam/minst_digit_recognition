@@ -33,7 +33,15 @@ poetry run [script]
 
 ## App
 
-TODO
+The drawing app allows the user to select a model, draw a digit and make a prediction with selected model.
+
+Run the app with ``poetry run app`` 
+
+After running the app, select a model with the ``Model`` dropdown, draw a digit and hit ``Predict`` button to use the model
+to predict the digit. You can update the drawing after the prediction or select a different model to make another
+prediction.
+
+Use the ``Clear`` button to clear the canvas and the prediction
 
 ## Available models
 
