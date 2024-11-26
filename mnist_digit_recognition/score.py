@@ -11,7 +11,7 @@ def main():
     data = InputData()
     data.load()
 
-    print("Scoring accuracy of models...")
+    print("Scoring accuracy of models")
     for _, model in get_models().items():
         print("Score", model.name, end=": ")
         model.load()

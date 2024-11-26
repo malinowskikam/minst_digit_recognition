@@ -10,7 +10,7 @@ def main():
     data = InputData()
     data.load()
 
-    print("Fitting models...")
+    print("Fitting models")
     for _, model in get_models().items():
         print("Fitting", model.name)
         model.fit(data)

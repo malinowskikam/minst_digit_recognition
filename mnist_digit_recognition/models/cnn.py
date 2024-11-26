@@ -45,10 +45,10 @@ class CnnModel(MlModel):
         self._data_gen.fit(train_x)
 
         dataset = self._data_gen.flow(
-                train_x,
-                train_y,
-                batch_size=self.batch_size
-            )
+            train_x,
+            train_y,
+            batch_size=self.batch_size
+        )
 
         self._model.fit(
             dataset,
@@ -83,7 +83,7 @@ class CnnModel(MlModel):
     def _transform_data(self, v: np.ndarray) -> np.ndarray:
         return (v / 255.0).reshape(-1, 28, 28, 1)
 
-    def _transform_labels(self, v:np.ndarray) -> np.ndarray:
+    def _transform_labels(self, v: np.ndarray) -> np.ndarray:
         return to_categorical(v, num_classes=10)
 
     def _create_model(self):

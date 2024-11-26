@@ -11,7 +11,7 @@ def main():
     data = InputData()
     data.load()
 
-    print("Evaluating confusion matrices for models...")
+    print("Evaluating confusion matrices for models")
     for _, model in get_models().items():
         model.load()
         print(model.name)

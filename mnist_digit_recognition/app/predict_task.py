@@ -8,6 +8,7 @@ from mnist_digit_recognition.models.base import MlModel
 
 logger = logging.getLogger("mnist_digit_recognition.app")
 
+
 class PredictTaskSignals(QObject):
     finished = pyqtSignal(int)
     error = pyqtSignal(str)
