@@ -24,7 +24,7 @@ This package offers several executable scripts:
 - ``confusion_matrix`` - calculate confusion matrices for the models
 - ``app`` - run the drawing app allowing to test the models
 
-The ``main`` script executes these steps in sequence
+The ``main`` script executes ``fit``, ``score``, and ``confusion_matrix`` scripts in sequence
 
 To run the script using poetry run:
 ```commandline
@@ -46,6 +46,7 @@ Use the ``Clear`` button to clear the canvas and the prediction
 ## Available models
 
 Currently supported models are:
+- Convolutional Neural Network (from Keras)
 - Naive Bayes (from sklearn)
 - Decision Tree (from sklearn)
 - Random Forest (from sklearn)
